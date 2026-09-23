@@ -1,0 +1,95 @@
+Building configuration...
+
+Current configuration : 989 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname 02_RT_02_01
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017541X-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.806
+ encapsulation dot1Q 806
+ ip address 10.80.127.254 255.255.255.0
+!
+interface FastEthernet0/0.807
+ encapsulation dot1Q 807
+ ip address 10.80.97.254 255.255.254.0
+!
+interface FastEthernet0/1
+ ip address 89.77.67.10 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+!
+router rip
+!
+ip classless
+ip route 10.80.0.0 255.255.224.0 10.80.127.2 
+ip route 10.80.32.0 255.255.224.0 10.80.127.3 
+ip route 10.80.64.0 255.255.224.0 10.80.127.5 
+ip route 0.0.0.0 0.0.0.0 89.77.67.9 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+02_RT_02_01#

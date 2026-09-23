@@ -1,0 +1,72 @@
+Building configuration...
+
+Current configuration : 1020 bytes
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname 02_SW_HC_03_01
+!
+!
+!
+ptp clock transparent domain 0 profile default
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface GigabitEthernet0/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface FastEthernet1/1
+ switchport access vlan 812
+ switchport mode access
+ switchport voice vlan 814
+ spanning-tree portfast
+!
+interface FastEthernet2/1
+ switchport access vlan 812
+ switchport mode access
+ switchport voice vlan 814
+ spanning-tree portfast
+!
+interface FastEthernet3/1
+ switchport access vlan 812
+ switchport mode access
+ switchport voice vlan 814
+!
+interface GigabitEthernet8/1
+ switchport mode trunk
+!
+interface GigabitEthernet9/1
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan807
+ ip address 10.80.96.32 255.255.254.0
+!
+ip default-gateway 10.80.97.254
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+
+02_SW_HC_03_01#

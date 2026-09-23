@@ -1,0 +1,66 @@
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname 01_SW_IC_05_01
+!
+!
+!
+ptp clock transparent domain 0 profile default
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface GigabitEthernet4/1
+ switchport trunk native vlan 820
+ switchport trunk allowed vlan 806,816-819
+ switchport mode trunk
+!
+interface GigabitEthernet5/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface GigabitEthernet6/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface GigabitEthernet7/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface GigabitEthernet8/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface GigabitEthernet9/1
+ switchport trunk native vlan 820
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan807
+ ip address 10.80.96.50 255.255.254.0
+!
+ip default-gateway 10.80.97.254
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+

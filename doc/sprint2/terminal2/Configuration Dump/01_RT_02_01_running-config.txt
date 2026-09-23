@@ -1,0 +1,105 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname 01_RT_02_01
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017K7S9-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.806
+ encapsulation dot1Q 806
+ ip address 10.80.127.2 255.255.255.0
+!
+interface FastEthernet0/0.808
+ description Gateway VLAN 808 - Users
+ encapsulation dot1Q 808
+ ip address 10.80.3.254 255.255.252.0
+!
+interface FastEthernet0/0.809
+ description Gateway VLAN 809 - WIFI
+ encapsulation dot1Q 809
+ ip address 10.80.23.254 255.255.248.0
+!
+interface FastEthernet0/0.810
+ description Gateway VLAN 810 - VoIP
+ encapsulation dot1Q 810
+ ip address 10.80.9.254 255.255.254.0
+!
+interface FastEthernet0/0.811
+ description Gateway VLAN 811 - Servers
+ encapsulation dot1Q 811
+ ip address 10.80.10.126 255.255.255.128
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+!
+ip classless
+ip route 10.80.0.0 255.255.0.0 10.80.127.254 
+ip route 0.0.0.0 0.0.0.0 10.80.127.254 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
